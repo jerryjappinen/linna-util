@@ -25,7 +25,6 @@ const detectionTestCss = `.${testClassname} {
 // https://codepen.io/zachleat/pen/oNvprpX
 export default () => {
   if (windowExists()) {
-
     // Make a test element
     const parent = window.document.createElement('div')
     parent.setAttribute('style', 'width:30px;height:30px;')

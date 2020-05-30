@@ -1,7 +1,6 @@
 import formatSlug from '../src/formatSlug'
 
 describe('formatSlug', () => {
-
   it('should slice to 16 chars', () => {
     expect(formatSlug('fooofooofooofooo')).toEqual('fooofooofooofooo')
     expect(formatSlug('fooofooofooofooofooofooofooofooo')).toEqual('fooofooofooofooo')
@@ -30,5 +29,4 @@ describe('formatSlug', () => {
     expect(formatSlug(212)).toEqual('212')
     expect(formatSlug(-212)).toEqual('212')
   })
-
 })

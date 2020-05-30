@@ -7,9 +7,7 @@ const failingCallback = async () => {
 }
 
 describe('tryPromises', () => {
-
   it('should wait all asynchronously', async () => {
-
     const seconds = [1000, 2000]
 
     const startTime = new Date()
@@ -28,5 +26,4 @@ describe('tryPromises', () => {
     const results = await tryPromises([failingCallback()])
     expect(results[0]).toBeUndefined()
   })
-
 })

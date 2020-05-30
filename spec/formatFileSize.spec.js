@@ -1,7 +1,6 @@
 import formatFileSize from '../src/formatFileSize'
 
 describe('formatFileSize', () => {
-
   it('should be 0 kB in empty', () => {
     expect(formatFileSize(0)).toEqual('0 kB')
   })
@@ -29,5 +28,4 @@ describe('formatFileSize', () => {
   it('should be 1 MB with 1000 * 1024', () => {
     expect(formatFileSize(1000 * 1024)).toEqual('1 MB')
   })
-
 })

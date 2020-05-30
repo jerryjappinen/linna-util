@@ -1,9 +1,7 @@
 import isValidDate from './isValidDate'
 
 export default (dateOrValue) => {
-
   if (dateOrValue || dateOrValue === 0) {
-
     if (isValidDate(dateOrValue)) {
       return dateOrValue
     }
@@ -13,7 +11,6 @@ export default (dateOrValue) => {
     if (isValidDate(newDate)) {
       return newDate
     }
-
   }
 
   return null

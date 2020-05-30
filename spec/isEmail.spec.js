@@ -1,7 +1,6 @@
 import isEmail from '../src/isEmail'
 
 describe('isEmail', () => {
-
   it('Fails with short TLD', () => {
     expect(isEmail('foo@bar.i')).toBeFalsy()
   })
@@ -38,5 +37,4 @@ describe('isEmail', () => {
   it('Passes with short values', () => {
     expect(isEmail('f@b.io')).toBeTruthy()
   })
-
 })

@@ -1,5 +1,4 @@
 export default (container, selector) => {
-
   const inputs = container.querySelectorAll(
     selector || 'input, button, textarea'
   )

@@ -1,11 +1,9 @@
 // Don't throw errors, return failing promises with `undefined` as return value
 export default async (promises) => {
   if (promises instanceof Array) {
-
     // Handle multiple promises with Promise.all
     return Promise.all(
       promises.map(async (promise) => {
-
         // Try promise
         try {
           return await promise
@@ -14,7 +12,6 @@ export default async (promises) => {
         } catch (error) {
           return undefined
         }
-
       })
     )
   }

@@ -23,5 +23,4 @@ describe('getUserAgentStringValue', () => {
   it('should include slashes', () => {
     expect(getUserAgentStringValue(ua + ' foo/bar/bar/bar', 'foo')).toEqual('bar/bar/bar')
   })
-
 })

@@ -8,7 +8,6 @@ const normalizePrefix = (prefix) => {
 }
 
 const composeClassname = (key, value, prefix) => {
-
   if (value) {
     const normalizedPrefix = normalizePrefix(prefix)
     let classname = '' + key
@@ -32,7 +31,6 @@ const composeClassname = (key, value, prefix) => {
 
 // Generate HTML/CSS class names based on a set of state, with prefixes and negatives added
 export default (stateHash, prefix, thirdArg) => {
-
   // If first argument is string, assume user is just interested in one classname
   if (isString(stateHash)) {
     return composeClassname(stateHash, prefix, thirdArg)
@@ -47,7 +45,6 @@ export default (stateHash, prefix, thirdArg) => {
     if (classname) {
       classes.push(classname)
     }
-
   }
 
   return classes

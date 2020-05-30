@@ -1,7 +1,6 @@
 import composeClassnames from '../src/composeClassnames'
 
 describe('composeClassnames', () => {
-
   it('should work with String passed', () => {
     expect(composeClassnames('foo', true)).toEqual('is-foo')
     expect(composeClassnames('foo', false)).toEqual(null)
@@ -48,11 +47,11 @@ describe('composeClassnames', () => {
 
   it('should output kebab-case keys', () => {
     expect(composeClassnames({
-      'fooBar': true,
-      'FooBar': true,
+      fooBar: true,
+      FooBar: true,
       'foo-bar': true,
       'Foo-Bar': true,
-      'Foo_Bar': true
+      Foo_Bar: true
     }, '')).toEqual([
       'foo-bar',
       'foo-bar',
@@ -64,11 +63,11 @@ describe('composeClassnames', () => {
 
   it('should output kebab-case values', () => {
     expect(composeClassnames({
-      'foo1': 'foo',
-      'foo2': 'FOO',
-      'foo3': 'FooBar',
-      'foo4': 'foo-BAR',
-      'foo5': 'foo_BAR'
+      foo1: 'foo',
+      foo2: 'FOO',
+      foo3: 'FooBar',
+      foo4: 'foo-BAR',
+      foo5: 'foo_BAR'
     }, '')).toEqual([
       'foo-1-foo',
       'foo-2-foo',
@@ -87,5 +86,4 @@ describe('composeClassnames', () => {
       'prefix-bar-bar'
     ])
   })
-
 })

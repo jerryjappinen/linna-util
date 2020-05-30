@@ -1,7 +1,6 @@
 import toPlainText from '../src/toPlainText'
 
 describe('toPlainText', () => {
-
   it('Removes inline HTML', () => {
     expect(toPlainText('Foo <em>bar</em>')).toEqual('Foo bar')
   })
@@ -17,5 +16,4 @@ describe('toPlainText', () => {
   it('Removes excess line breaks', () => {
     expect(toPlainText('Foo\n\n\n\n\nBar')).toEqual('Foo\n\nBar')
   })
-
 })

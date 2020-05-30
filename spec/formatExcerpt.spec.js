@@ -1,7 +1,6 @@
 import formatExcerpt from '../src/formatExcerpt'
 
 describe('formatExcerpt', () => {
-
   it('Leaves short string untouched', () => {
     expect(formatExcerpt('Foo bar', 10)).toEqual('Foo bar')
   })
@@ -33,5 +32,4 @@ describe('formatExcerpt', () => {
   it('Trims whitespace from end even when trimming', () => {
     expect(formatExcerpt('Foo ', 3)).toEqual('Foo')
   })
-
 })

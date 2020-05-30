@@ -9,7 +9,7 @@ const testCases = {
   'ftp://example.com/file.txt': true, // file transfer absolute URL
   '//cdn.example.com/lib.js': true, // protocol-relative absolute URL
   '/myfolder/test.txt': false, // relative URL
-  'test': false // also relative URL
+  test: false // also relative URL
 }
 
 describe('isAbsoluteUrl', () => {

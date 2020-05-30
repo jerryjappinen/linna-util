@@ -2,7 +2,6 @@ import forEachAsync from '../src/forEachAsync'
 import wait from '../src/wait'
 
 describe('forEachAsync', () => {
-
   it('should wait all asynchronously', async () => {
     jest.setTimeout(6000)
 
@@ -38,5 +37,4 @@ describe('forEachAsync', () => {
     expect(one).toEqual(true)
     expect(four).toEqual(true)
   })
-
 })

@@ -3,7 +3,6 @@ import { isArray } from 'lodash'
 import parseVersionNumber from '../src/parseVersionNumber'
 
 describe('parseVersionNumber', () => {
-
   it('should return array', () => {
     expect(isArray(parseVersionNumber('1.0.0'))).toBeTruthy()
   })
@@ -20,5 +19,4 @@ describe('parseVersionNumber', () => {
     expect(parseVersionNumber('')).toBe(null)
     expect(parseVersionNumber([])).toBe(null)
   })
-
 })

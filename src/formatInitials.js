@@ -8,7 +8,6 @@ const getInitialsFromParts = (parts) => {
 
 // Return a lowercase, short two-letter string without special characters
 export default (string) => {
-
   if (string) {
     const normalizedString = '' + string
 

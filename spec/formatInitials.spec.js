@@ -2,7 +2,6 @@ import formatInitials from '../src/formatInitials'
 
 // Returns something like 2019-04-23T13:54:28.715Z
 describe('formatInitials', () => {
-
   it('should return string', () => {
     expect(typeof formatInitials('Foo Bar')).toEqual('string')
   })
@@ -33,5 +32,4 @@ describe('formatInitials', () => {
   it('should respect underline', () => {
     expect(formatInitials('foo-bar')).toEqual('FB')
   })
-
 })

@@ -21,7 +21,6 @@ export const getStaticPrefix = (vnode) => {
 }
 
 export const getComponentNamePrefix = (vnode) => {
-
   // In case component has a name
   const componentName = vnode.context.$vnode.tag.replace('vue-component-', '')
   const dashIndex = componentName.indexOf('-')
@@ -67,11 +66,9 @@ export const normalizeBindingValue = (value, prefix) => {
 
 // Compose final classname
 export const composeClassname = (key, value) => {
-
   if (value) {
     if (isString(value) || isNumber(value)) {
       return kebabCase(key + '-' + value)
-
     } else if (value) {
       return key
     }

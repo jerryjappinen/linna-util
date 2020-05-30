@@ -13,7 +13,6 @@ export default (userAgentString, prefix) => {
     if (spaceIndex > -1) {
       value = value.substr(0, spaceIndex)
     }
-
   }
 
   return value || null

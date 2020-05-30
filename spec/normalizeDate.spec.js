@@ -7,7 +7,6 @@ const isValidDate = (value) => {
 }
 
 describe('normalizeDate', () => {
-
   it('Returns null on empty values', () => {
     expect(normalizeDate()).toBeNull()
     expect(normalizeDate(null)).toBeNull()
@@ -32,5 +31,4 @@ describe('normalizeDate', () => {
     expect(expect(Object.is(normalizeDate(date1), date1))).toBeTruthy()
     expect(expect(Object.is(normalizeDate(date2), date2))).toBeTruthy()
   })
-
 })

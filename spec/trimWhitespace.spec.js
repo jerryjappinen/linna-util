@@ -20,41 +20,32 @@ const whitespaceStrings = {
 }
 
 describe('trimWhitespace with trailing whitespace', () => {
-
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
   // Test this with each of the test cases provided above
   for (const key in whitespaceStrings) {
     it('should trim ' + key, () => {
-
       // Whitespace is at the end of string
       expect(trimWhitespace(expectedResult + whitespaceStrings[key])).toEqual(expectedResult)
-
     })
   }
-
 })
 
 describe('Util trimWhitespace with leading whitespace', () => {
-
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
   // Test this with each of the test cases provided above
   for (const key in whitespaceStrings) {
     it('should trim ' + key, () => {
-
       // Whitespace is at the start of string
       expect(trimWhitespace(whitespaceStrings[key] + expectedResult)).toEqual(expectedResult)
-
     })
   }
-
 })
 
 describe('Util trimWhitespace with excess whitespace', () => {
-
   // Expected result is the same for all these test cases
   const partOne = 'Foo'
   const partTwo = 'oo'
@@ -63,11 +54,8 @@ describe('Util trimWhitespace with excess whitespace', () => {
   // Test this with each of the test cases provided above
   for (const key in whitespaceStrings) {
     it('should trim ' + key, () => {
-
       // Whitespace is injected in the middle
       expect(trimWhitespace(partOne + whitespaceStrings[key] + partTwo)).toEqual(expectedResult)
-
     })
   }
-
 })

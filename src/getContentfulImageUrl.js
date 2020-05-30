@@ -8,10 +8,8 @@ export default (url, options) => {
 
   if (url && isString(url)) {
     realUrl = url
-
   } else if (realOptions.url) {
     realUrl = realOptions.url
-
   } else if (
     realOptions.image &&
     realOptions.image.fields &&

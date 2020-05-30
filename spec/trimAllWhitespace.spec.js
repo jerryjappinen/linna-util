@@ -20,14 +20,12 @@ const whitespaceStrings = {
 }
 
 describe('trimAllWhitespace with trailing whitespace', () => {
-
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
   // Test this with each of the test cases provided above
   for (const key in whitespaceStrings) {
     it('should trim ' + key, () => {
-
       // Whitespace is at the end of string
       expect(
         trimAllWhitespace(
@@ -40,8 +38,6 @@ describe('trimAllWhitespace with trailing whitespace', () => {
           whitespaceStrings[key]
         )
       ).toEqual(expectedResult + expectedResult)
-
     })
   }
-
 })

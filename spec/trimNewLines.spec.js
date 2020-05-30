@@ -10,7 +10,6 @@ const newlineStrings = {
 }
 
 describe('trimNewLines', () => {
-
   it('should not touch string with no new lines', () => {
     expect(trimNewLines('Foo')).toEqual('Foo')
   })
@@ -22,47 +21,37 @@ describe('trimNewLines', () => {
   it('should keep trailing whitespace', () => {
     expect(trimNewLines('foo  ')).toEqual('foo  ')
   })
-
 })
 
 describe('Util trimNewLines with trailing new line', () => {
-
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
   // Test this with each of the test cases provided above
   for (const key in newlineStrings) {
     it('should trim ' + key, () => {
-
       // New line is at the end of string
       expect(trimNewLines(expectedResult + newlineStrings[key]))
         .toEqual(expectedResult + ' ')
-
     })
   }
-
 })
 
 describe('Util trimNewLines with leading new line', () => {
-
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
   // Test this with each of the test cases provided above
   for (const key in newlineStrings) {
     it('should trim ' + key, () => {
-
       // New line is at the start of string
       expect(trimNewLines(newlineStrings[key] + expectedResult))
         .toEqual(' ' + expectedResult)
-
     })
   }
-
 })
 
 describe('Util trimNewLines with excess new line', () => {
-
   // Expected result is the same for all these test cases
   const partOne = 'Foo'
   const partTwo = 'oo'
@@ -71,12 +60,9 @@ describe('Util trimNewLines with excess new line', () => {
   // Test this with each of the test cases provided above
   for (const key in newlineStrings) {
     it('should trim ' + key, () => {
-
       // New line is injected in the middle
       expect(trimNewLines(partOne + newlineStrings[key] + partTwo))
         .toEqual(expectedResult)
-
     })
   }
-
 })

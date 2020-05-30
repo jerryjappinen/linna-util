@@ -1,7 +1,6 @@
 import isValidDate from '../src/isValidDate'
 
 describe('isValidDate', () => {
-
   it('Fails with invalid date', () => {
     expect(isValidDate(new Date(''))).toBeFalsy()
     expect(isValidDate(new Date('foo'))).toBeFalsy()
@@ -24,5 +23,4 @@ describe('isValidDate', () => {
   it('Passes with new Date()', () => {
     expect(isValidDate(new Date(1234))).toBeTruthy()
   })
-
 })

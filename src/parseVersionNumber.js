@@ -2,7 +2,6 @@ import { isNaN, isNumber } from 'lodash'
 
 export default (string) => {
   if (string && typeof string === 'string' && string.length) {
-
     let parsed = string.split('.').map((i) => {
       return parseInt(i)
     })

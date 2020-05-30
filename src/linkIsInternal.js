@@ -2,7 +2,6 @@ import windowExists from './windowExists'
 
 export default (urlOrElement) => {
   if (windowExists()) {
-
     // Check if URL or element is pointing to external domain
     const internalRegex = new RegExp(
       '^((((http:\\/\\/|https:\\/\\/)(www\\.)?)?' +
@@ -21,7 +20,6 @@ export default (urlOrElement) => {
     if (internalRegex.test(url)) {
       return true
     }
-
   }
 
   return false

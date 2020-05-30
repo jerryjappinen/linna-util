@@ -2,7 +2,6 @@ import forEachSync from '../src/forEachSync'
 import wait from '../src/wait'
 
 describe('forEachSync', () => {
-
   it('should wait all synchronously', async () => {
     jest.setTimeout(12000)
 
@@ -33,5 +32,4 @@ describe('forEachSync', () => {
     expect(responses[2] = durations[2])
     expect(responses[3] = durations[3])
   })
-
 })

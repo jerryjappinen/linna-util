@@ -8,7 +8,6 @@ export default (Vue, {
   mixins,
   svgs
 }) => {
-
   if (components) {
     for (const componentName in components) {
       Vue.component(kebabCase(componentName), components[componentName])
@@ -25,7 +24,6 @@ export default (Vue, {
     for (const directiveName in directives) {
       Vue.directive(camelCase(directiveName), directives[directiveName])
     }
-
   }
 
   if (filters) {
@@ -39,5 +37,4 @@ export default (Vue, {
       Vue.mixin(mixins[mixinName])
     }
   }
-
 }

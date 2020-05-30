@@ -26,5 +26,4 @@ describe('getDomain', () => {
     expect(getDomain('foo.com' + '/' + params)).toEqual('foo.com')
     expect(getDomain('foo' + '/' + params)).toEqual('foo')
   })
-
 })

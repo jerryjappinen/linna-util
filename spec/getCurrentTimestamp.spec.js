@@ -2,7 +2,6 @@ import getCurrentTimestamp from '../src/getCurrentTimestamp'
 
 // Returns something like 2019-04-23T13:54:28.715Z
 describe('getCurrentTimestamp', () => {
-
   it('should return string', () => {
     expect(typeof getCurrentTimestamp()).toEqual('string')
   })
@@ -14,5 +13,4 @@ describe('getCurrentTimestamp', () => {
   it('should include zulu', () => {
     expect(getCurrentTimestamp().indexOf('Z')).toEqual(23)
   })
-
 })
