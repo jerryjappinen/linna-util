@@ -1,3 +1,3 @@
 export default () => {
-  return !!(process && process.client)
+  return !(process && process.server)
 }
