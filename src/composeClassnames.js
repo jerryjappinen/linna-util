@@ -1,4 +1,6 @@
-import { isNumber, isString, kebabCase } from 'lodash'
+import isNumber from 'lodash/isNumber'
+import isString from 'lodash/isString'
+import kebabCase from 'lodash/kebabCase'
 
 const normalizePrefix = (prefix) => {
   if (!prefix && prefix !== '') {

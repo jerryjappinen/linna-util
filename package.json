@@ -22,7 +22,14 @@
     "test": "jest --config jest.config.js",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
+  "author": {
+    "name": "Jerry Jäppinen",
+    "url": "https://github.com/jerryjappinen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerryjappinen/linna-util.git"
+  },
   "license": "MIT",
   "dependencies": {
     "date-fns": "^2.14.0",
@@ -31,19 +38,19 @@
     "remove-markdown": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.1",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "@types/jest": "^25.2.3",
-    "babel-jest": "^26.0.1",
-    "eslint": "^7.1.0",
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@types/jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "jest-chain": "^1.1.5",
     "jest-extended": "^0.11.5"
   }

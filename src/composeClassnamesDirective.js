@@ -1,12 +1,10 @@
-import {
-  isArray,
-  isNumber,
-  isString,
-  kebabCase,
-  keyBy,
-  mapKeys,
-  mapValues
-} from 'lodash'
+import isArray from 'lodash/isArray'
+import isNumber from 'lodash/isNumber'
+import isString from 'lodash/isString'
+import kebabCase from 'lodash/kebabCase'
+import keyBy from 'lodash/keyBy'
+import mapKeys from 'lodash/mapKeys'
+import mapValues from 'lodash/mapValues'
 
 export const isRoot = (vnode) => {
   return !!(

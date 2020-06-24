@@ -1,4 +1,5 @@
-import { isNaN, isNumber } from 'lodash'
+import isNaN from 'lodash/isNaN'
+import isNumber from 'lodash/isNumber'
 
 export default (string) => {
   if (string && typeof string === 'string' && string.length) {

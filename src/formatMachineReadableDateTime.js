@@ -1,4 +1,4 @@
-import { isDate } from 'date-fns'
+import isDate from 'date-fns/isDate'
 
 export default (date) => {
   if (!isDate(date)) {

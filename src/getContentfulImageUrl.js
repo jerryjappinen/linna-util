@@ -1,4 +1,6 @@
-import { isPlainObject, isString, snakeCase } from 'lodash'
+import isPlainObject from 'lodash/isPlainObject'
+import isString from 'lodash/isString'
+import snakeCase from 'lodash/snakeCase'
 
 // https://www.contentful.com/developers/docs/references/images-api/#/reference/resizing-&-cropping/change-the-resizing-behavior
 export default (url, options) => {
