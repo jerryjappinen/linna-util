@@ -35,11 +35,11 @@ export default (url, options) => {
   }
 
   if (realOptions.width) {
-    params.push('w=' + realOptions.width)
+    params.push('w=' + Math.round(realOptions.width))
   }
 
   if (realOptions.height) {
-    params.push('h=' + realOptions.height)
+    params.push('h=' + Math.round(realOptions.height))
   }
 
   if (realUrl) {
