@@ -12,6 +12,8 @@
   },
   "scripts": {
     "build": "babel src --out-dir ./",
+    "clean": "git clean -f",
+    "clean:dry": "git clean -n",
     "prepare": "npm run build",
     "patch": "git push && npm version patch -m \"New patch version\" && npm publish && git push -u origin HEAD --tags",
     "minor": "git push && npm version minor -m \"New minor version\" && npm publish && git push -u origin HEAD --tags",
