@@ -34,9 +34,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "date-fns": "^2.15.0",
-    "lodash": "^4.17.20",
+    "date-fns": "^2.21.3",
+    "lodash": "^4.17.21",
     "md5": "^2.3.0",
+    "parse-csv": "^0.2.0",
     "remove-markdown": "^0.3.0"
   },
   "devDependencies": {
