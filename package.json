@@ -1,6 +1,6 @@
 {
   "name": "linna-util",
-  "version": "5.0.21",
+  "version": "6.0.0",
   "description": "",
   "main": "dist/linna-util.cjs.js",
   "module": "dist/linna-util.esm.js",
