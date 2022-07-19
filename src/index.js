@@ -1,169 +1,81 @@
-// contentful
-
-import blur from './blur'
-import clearSelection from './clearSelection'
-import composeClassnames from './composeClassnames'
-// import composeClassnamesDirective from './composeClassnamesDirective'
-import createStyleElement from './createStyleElement'
-import csvToJson from './csvToJson'
-import detectObtrusiveScrollbars from './detectObtrusiveScrollbars'
-import eventHasAnyMetaKey from './eventHasAnyMetaKey'
-import eventHasKey from './eventHasKey'
-import eventHasMetaKey from './eventHasMetaKey'
-import focusFirstInput from './focusFirstInput'
-import focusLastInput from './focusLastInput'
-import forEachAsync from './forEachAsync'
-import forEachSync from './forEachSync'
-import formatDate from './formatDate'
-import formatDateInterval from './formatDateInterval'
-import formatEventName from './formatEventName'
-import formatExcerpt from './formatExcerpt'
-import formatFileSize from './formatFileSize'
-import formatInitials from './formatInitials'
-import formatMachineReadableDate from './formatMachineReadableDate'
-import formatMachineReadableDateTime from './formatMachineReadableDateTime'
-import formatMonth from './formatMonth'
-import formatSlug from './formatSlug'
-// import frameLoop from './frameLoop'
-import gamepadIsSupported from './gamepadIsSupported'
-import getApplePodcastUrl from './getApplePodcastUrl'
-import getCurrentTimestamp from './getCurrentTimestamp'
-import getDirection from './getDirection'
-import getDomain from './getDomain'
-import getFacebookPageUrl from './getFacebookPageUrl'
-import getFacebookProfileUrl from './getFacebookProfileUrl'
-import getGamepads from './getGamepads'
-import getGithubProfileUrl from './getGithubProfileUrl'
-import getGravatarImageUrl from './getGravatarImageUrl'
-import getInstagramProfileUrl from './getInstagramProfileUrl'
-import getIsoDurationInSeconds from './getIsoDurationInSeconds'
-import getLinkedinCompanyUrl from './getLinkedinCompanyUrl'
-import getLinkedinProfileUrl from './getLinkedinProfileUrl'
-import getMediumCollectionUrl from './getMediumCollectionUrl'
-import getMediumProfileUrl from './getMediumProfileUrl'
-import getMediumTopicUrl from './getMediumTopicUrl'
-import getNameFromEmail from './getNameFromEmail'
-import getRedditProfileUrl from './getRedditProfileUrl'
-import getRedditSubUrl from './getRedditSubUrl'
-import getSkypeLink from './getSkypeLink'
-import getSpotifyShowUrl from './getSpotifyShowUrl'
-import getTwitchVideoUrl from './getTwitchVideoUrl'
-import getTwitterProfileUrl from './getTwitterProfileUrl'
-import getUserAgentStringValue from './getUserAgentStringValue'
-import getYoutubeThumbnailUrl from './getYoutubeThumbnailUrl'
-import getYoutubeVideoUrl from './getYoutubeVideoUrl'
-import goToUrl from './goToUrl'
-import includesAny from './includesAny'
-import isAbsoluteUrl from './isAbsoluteUrl'
-import isClient from './isClient'
-import isEmail from './isEmail'
-import isServer from './isServer'
-import isValidDate from './isValidDate'
-import linkIsInternal from './linkIsInternal'
-import mergeWithArrays from './mergeWithArrays'
-import normalizeDate from './normalizeDate'
-import now from './now'
-import nowEpoch from './nowEpoch'
-import nowIso from './nowIso'
-import openTab from './openTab'
-import parseDurationSeconds from './parseDurationSeconds'
-import parseIsoDuration from './parseIsoDuration'
-import parseVersionNumber from './parseVersionNumber'
-import registerVueGlobals from './registerVueGlobals'
-import reloadPage from './reloadPage'
-import removeTrailingSlash from './removeTrailingSlash'
-import replaceAll from './replaceAll'
-import toDecimal from './toDecimal'
-import toPlainText from './toPlainText'
-import trimAllWhitespace from './trimAllWhitespace'
-import trimNewLines from './trimNewLines'
-import trimWhitespace from './trimWhitespace'
-import tryPromises from './tryPromises'
-import userPrefersDarkMode from './userPrefersDarkMode'
-import wait from './wait'
-import windowExists from './windowExists'
-
-export default {
-  blur,
-  clearSelection,
-  composeClassnames,
-  // composeClassnamesDirective,
-  createStyleElement,
-  csvToJson,
-  detectObtrusiveScrollbars,
-  eventHasAnyMetaKey,
-  eventHasKey,
-  eventHasMetaKey,
-  focusFirstInput,
-  focusLastInput,
-  forEachAsync,
-  forEachSync,
-  formatDate,
-  formatDateInterval,
-  formatEventName,
-  formatExcerpt,
-  formatFileSize,
-  formatInitials,
-  formatMachineReadableDate,
-  formatMachineReadableDateTime,
-  formatMonth,
-  formatSlug,
-  // frameLoop,
-  gamepadIsSupported,
-  getApplePodcastUrl,
-  getCurrentTimestamp,
-  getDirection,
-  getDomain,
-  getFacebookPageUrl,
-  getFacebookProfileUrl,
-  getGamepads,
-  getGithubProfileUrl,
-  getGravatarImageUrl,
-  getInstagramProfileUrl,
-  getIsoDurationInSeconds,
-  getLinkedinCompanyUrl,
-  getLinkedinProfileUrl,
-  getMediumCollectionUrl,
-  getMediumProfileUrl,
-  getMediumTopicUrl,
-  getNameFromEmail,
-  getRedditProfileUrl,
-  getRedditSubUrl,
-  getSkypeLink,
-  getSpotifyShowUrl,
-  getTwitchVideoUrl,
-  getTwitterProfileUrl,
-  getUserAgentStringValue,
-  getYoutubeThumbnailUrl,
-  getYoutubeVideoUrl,
-  goToUrl,
-  includesAny,
-  isAbsoluteUrl,
-  isClient,
-  isEmail,
-  isServer,
-  isValidDate,
-  linkIsInternal,
-  mergeWithArrays,
-  normalizeDate,
-  now,
-  nowEpoch,
-  nowIso,
-  openTab,
-  parseDurationSeconds,
-  parseIsoDuration,
-  parseVersionNumber,
-  registerVueGlobals,
-  reloadPage,
-  removeTrailingSlash,
-  replaceAll,
-  toDecimal,
-  toPlainText,
-  trimAllWhitespace,
-  trimNewLines,
-  trimWhitespace,
-  tryPromises,
-  userPrefersDarkMode,
-  wait,
-  windowExists
-}
+export { default as blur } from './blur'
+export { default as clearSelection } from './clearSelection'
+export { default as composeClassnames } from './composeClassnames'
+export { default as createStyleElement } from './createStyleElement'
+export { default as csvToJson } from './csvToJson'
+export { default as detectObtrusiveScrollbars } from './detectObtrusiveScrollbars'
+export { default as eventHasAnyMetaKey } from './eventHasAnyMetaKey'
+export { default as eventHasKey } from './eventHasKey'
+export { default as eventHasMetaKey } from './eventHasMetaKey'
+export { default as focusFirstInput } from './focusFirstInput'
+export { default as focusLastInput } from './focusLastInput'
+export { default as forEachAsync } from './forEachAsync'
+export { default as forEachSync } from './forEachSync'
+export { default as formatDate } from './formatDate'
+export { default as formatDateInterval } from './formatDateInterval'
+export { default as formatEventName } from './formatEventName'
+export { default as formatExcerpt } from './formatExcerpt'
+export { default as formatFileSize } from './formatFileSize'
+export { default as formatInitials } from './formatInitials'
+export { default as formatMachineReadableDate } from './formatMachineReadableDate'
+export { default as formatMachineReadableDateTime } from './formatMachineReadableDateTime'
+export { default as formatMonth } from './formatMonth'
+export { default as formatSlug } from './formatSlug'
+export { default as frameLoop } from './frameLoop'
+export { default as gamepadIsSupported } from './gamepadIsSupported'
+export { default as getApplePodcastUrl } from './getApplePodcastUrl'
+export { default as getCurrentTimestamp } from './getCurrentTimestamp'
+export { default as getDirection } from './getDirection'
+export { default as getDomain } from './getDomain'
+export { default as getFacebookPageUrl } from './getFacebookPageUrl'
+export { default as getFacebookProfileUrl } from './getFacebookProfileUrl'
+export { default as getGamepads } from './getGamepads'
+export { default as getGithubProfileUrl } from './getGithubProfileUrl'
+export { default as getGravatarImageUrl } from './getGravatarImageUrl'
+export { default as getInstagramProfileUrl } from './getInstagramProfileUrl'
+export { default as getIsoDurationInSeconds } from './getIsoDurationInSeconds'
+export { default as getLinkedinCompanyUrl } from './getLinkedinCompanyUrl'
+export { default as getLinkedinProfileUrl } from './getLinkedinProfileUrl'
+export { default as getMediumCollectionUrl } from './getMediumCollectionUrl'
+export { default as getMediumProfileUrl } from './getMediumProfileUrl'
+export { default as getMediumTopicUrl } from './getMediumTopicUrl'
+export { default as getNameFromEmail } from './getNameFromEmail'
+export { default as getRedditProfileUrl } from './getRedditProfileUrl'
+export { default as getRedditSubUrl } from './getRedditSubUrl'
+export { default as getSkypeLink } from './getSkypeLink'
+export { default as getSpotifyShowUrl } from './getSpotifyShowUrl'
+export { default as getTwitchVideoUrl } from './getTwitchVideoUrl'
+export { default as getTwitterProfileUrl } from './getTwitterProfileUrl'
+export { default as getUserAgentStringValue } from './getUserAgentStringValue'
+export { default as getYoutubeThumbnailUrl } from './getYoutubeThumbnailUrl'
+export { default as getYoutubeVideoUrl } from './getYoutubeVideoUrl'
+export { default as goToUrl } from './goToUrl'
+export { default as includesAny } from './includesAny'
+export { default as isAbsoluteUrl } from './isAbsoluteUrl'
+export { default as isClient } from './isClient'
+export { default as isEmail } from './isEmail'
+export { default as isServer } from './isServer'
+export { default as isValidDate } from './isValidDate'
+export { default as linkIsInternal } from './linkIsInternal'
+export { default as mergeWithArrays } from './mergeWithArrays'
+export { default as normalizeDate } from './normalizeDate'
+export { default as now } from './now'
+export { default as nowEpoch } from './nowEpoch'
+export { default as nowIso } from './nowIso'
+export { default as openTab } from './openTab'
+export { default as parseDurationSeconds } from './parseDurationSeconds'
+export { default as parseIsoDuration } from './parseIsoDuration'
+export { default as parseVersionNumber } from './parseVersionNumber'
+export { default as registerVueGlobals } from './registerVueGlobals'
+export { default as reloadPage } from './reloadPage'
+export { default as removeTrailingSlash } from './removeTrailingSlash'
+export { default as replaceAll } from './replaceAll'
+export { default as toDecimal } from './toDecimal'
+export { default as toPlainText } from './toPlainText'
+export { default as trimAllWhitespace } from './trimAllWhitespace'
+export { default as trimNewLines } from './trimNewLines'
+export { default as trimWhitespace } from './trimWhitespace'
+export { default as tryPromises } from './tryPromises'
+export { default as userPrefersDarkMode } from './userPrefersDarkMode'
+export { default as wait } from './wait'
+export { default as windowExists } from './windowExists'

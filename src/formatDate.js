@@ -1,4 +1,4 @@
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 
 export default (date) => {
   return format(date, 'd MMMM yyyy')

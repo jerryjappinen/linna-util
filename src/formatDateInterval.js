@@ -1,7 +1,4 @@
-import format from 'date-fns/format'
-import getDay from 'date-fns/getDay'
-import getMonth from 'date-fns/getMonth'
-import getYear from 'date-fns/getYear'
+import { format, getDay, getMonth, getYear } from 'date-fns'
 
 import formatDate from './formatDate'
 

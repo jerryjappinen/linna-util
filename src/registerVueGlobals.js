@@ -1,5 +1,4 @@
-import camelCase from 'lodash/camelCase'
-import kebabCase from 'lodash/kebabCase'
+import { camelCase, kebabCase } from 'lodash'
 
 // Register components, directives, mixins etc. on the top level
 export default (Vue, {

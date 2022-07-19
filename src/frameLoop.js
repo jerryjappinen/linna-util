@@ -1,241 +1,249 @@
-// Frame loop runs a recurring update routine with a maximum frame rate
-const defaultFps = 60
+export default (options) => {
+  // Frame loop runs a recurring update routine with a maximum frame rate
+  const defaultFps = 60
 
-let lastStartTime = 0
-let lastEvaluationTime = 0 // Time of last provided requestAnimationFrame
-let lastUpdateTime = 0 // Time of last update. Increments by exactly 1 frameInterval
-let lastRenderTime = 0 // Time of last render. Increments in multiples of frameInterval
-let frameInterval = 0 // how frequently the game state updates in ms. It is 20 Hz (50ms) here
-let frameLoopId = null // requestAnimationFrame will store the reset callback here
+  let lastStartTime = 0
+  let lastEvaluationTime = 0 // Time of last provided requestAnimationFrame
+  let lastUpdateTime = 0 // Time of last update. Increments by exactly 1 frameInterval
+  let lastRenderTime = 0 // Time of last render. Increments in multiples of frameInterval
+  let frameInterval = 0 // how frequently the game state updates in ms. It is 20 Hz (50ms) here
+  let frameLoopId = null // requestAnimationFrame will store the reset callback here
 
-// User callbacks
-let onEvaluationCallback = null // runs as fast as the computer can
-let onUpdateCallback = null // always runs for every frame
-let onRenderCallback = null // runs only on the last frame, when frames are skipped
-let onPauseCallback = null // runs when a loop is paused
-let onResetCallback = null // runs when a loop is reset
+  // User callbacks
+  let onEvaluationCallback = null // runs as fast as the computer can
+  let onUpdateCallback = null // always runs for every frame
+  let onRenderCallback = null // runs only on the last frame, when frames are skipped
+  let onPauseCallback = null // runs when a loop is paused
+  let onResetCallback = null // runs when a loop is reset
 
-// Getters
-const getFrameTime = () => {
-  return frameInterval
-}
-
-const getFps = () => {
-  return 1000 / frameInterval
-}
-
-const getLastStartTime = () => {
-  return lastStartTime
-}
-
-const getLastRenderTime = () => {
-  return lastRenderTime
-}
-
-const getLastUpdateTime = () => {
-  return lastUpdateTime
-}
-
-const getLastEvaluationTime = () => {
-  return lastEvaluationTime
-}
-
-// Set FPS as frameInterval (in ms)
-const setFrameTime = (frameTimeInMs) => {
-  frameInterval = frameTimeInMs
-}
-
-const setFps = (fps) => {
-  return setFrameTime(1000 / fps)
-}
-
-// User-defined options and callbacks
-const setOptions = ({
-  fps,
-  frameInterval,
-  onEvaluation,
-  onUpdate,
-  onRender,
-  onPause,
-  onReset
-}) => {
-  // Frame time can be set in FPS or MS
-  if (fps) {
-    setFps(fps)
-  } else if (frameInterval) {
-    setFrameTime(frameInterval)
+  // Getters
+  const getFrameTime = () => {
+    return frameInterval
   }
 
-  if (onEvaluation) {
-    onEvaluationCallback = onEvaluation
+  const getFps = () => {
+    return 1000 / frameInterval
   }
 
-  if (onUpdate) {
-    onUpdateCallback = onUpdate
+  const getLastStartTime = () => {
+    return lastStartTime
   }
 
-  if (onRender) {
-    onRenderCallback = onRender
+  const getLastRenderTime = () => {
+    return lastRenderTime
   }
 
-  if (onPause) {
-    onPauseCallback = onPause
+  const getLastUpdateTime = () => {
+    return lastUpdateTime
   }
 
-  if (onReset) {
-    onResetCallback = onReset
+  const getLastEvaluationTime = () => {
+    return lastEvaluationTime
   }
-}
 
-const setInitialValues = () => {
-  lastEvaluationTime = 0
-  lastUpdateTime = 0
-  lastRenderTime = 0
-}
+  // Set FPS as frameInterval (in ms)
+  const setFrameTime = (frameTimeInMs) => {
+    frameInterval = frameTimeInMs
+  }
 
-const setDefaults = () => {
-  setFps(defaultFps)
-}
+  const setFps = (fps) => {
+    return setFrameTime(1000 / fps)
+  }
 
-// Loop handling
-
-// Now lastUpdateTime is this tick
-const queueFrameStateUpdates = (frameCount) => {
-  console.log('queueFrameStateUpdates', frameCount)
-
-  for (var i = 0; i < frameCount; i++) {
-    lastUpdateTime = lastUpdateTime + frameInterval
-
-    // Run (all) frame updates
-    if (onUpdateCallback) {
-      onUpdateCallback(lastUpdateTime)
+  // User-defined options and callbacks
+  const setOptions = ({
+    fps,
+    frameInterval,
+    onEvaluation,
+    onUpdate,
+    onRender,
+    onPause,
+    onReset
+  }) => {
+    // Frame time can be set in FPS or MS
+    if (fps) {
+      setFps(fps)
+    } else if (frameInterval) {
+      setFrameTime(frameInterval)
     }
-  }
-}
 
-// If tFrame < nextFrameTime then 0 ticks need to be updated (0 is default for frameCount)
-// If tFrame = nextFrameTime then 1 tick needs to be updated (and so forth)
-const onEvaluation = (timeElapsedAbsolute) => {
-  const timeElapsed = timeElapsedAbsolute - lastStartTime
+    if (onEvaluation) {
+      onEvaluationCallback = onEvaluation
+    }
 
-  // How many updates should have happened between these two rendered frames. Not all frames are rendered.
-  // If frameCount is large, then game was asleep, or the machine cannot keep up
-  let frameCount = 0
+    if (onUpdate) {
+      onUpdateCallback = onUpdate
+    }
 
-  const nextFrameTime = lastUpdateTime + frameInterval
-  if (timeElapsed > nextFrameTime) {
-    // time between requestAnimationFrame callback and last update
-    // const timeSinceTick = timeElapsed - lastUpdateTime
+    if (onRender) {
+      onRenderCallback = onRender
+    }
 
-    // Increment total
-    frameCount = Math.floor((timeElapsed - lastUpdateTime) / frameInterval)
-  }
+    if (onPause) {
+      onPauseCallback = onPause
+    }
 
-  console.log('onEvaluation', lastUpdateTime, frameCount, timeElapsed)
-
-  // NOTE: Runs before update and render. Timestamp will not match framerate targets
-  if (onEvaluationCallback) {
-    onEvaluationCallback(timeElapsed)
-  }
-
-  if (frameCount) {
-    // Run frame routine for each tick that has passed
-    queueFrameStateUpdates(frameCount)
-
-    // Run frame update (only once, in case of skipped frames)
-    // FIXME: should we update timestamp after callback?
-    lastRenderTime = lastUpdateTime
-
-    if (onRenderCallback) {
-      onRenderCallback(lastUpdateTime)
+    if (onReset) {
+      onResetCallback = onReset
     }
   }
 
-  lastEvaluationTime = timeElapsed
+  const setInitialValues = () => {
+    lastEvaluationTime = 0
+    lastUpdateTime = 0
+    lastRenderTime = 0
+  }
 
-  return pauseFrameLoop
-}
+  const setDefaults = () => {
+    setFps(defaultFps)
+  }
 
-// Loop while
-const frameLoop = (timeElapsedAbsolute) => {
-  console.log('frameLoop', timeElapsedAbsolute)
+  // Loop handling
 
-  // Register next frame
-  // NOTE: requestAnimationFrame will always pass a timestamp to callback
-  frameLoopId = window.requestAnimationFrame(frameLoop)
+  // Now lastUpdateTime is this tick
+  const queueFrameStateUpdates = (frameCount) => {
+    console.log('queueFrameStateUpdates', frameCount)
 
-  // Execute frame
-  onEvaluation(timeElapsedAbsolute)
+    for (var i = 0; i < frameCount; i++) {
+      lastUpdateTime = lastUpdateTime + frameInterval
 
-  return pauseFrameLoop
-}
+      // Run (all) frame updates
+      if (onUpdateCallback) {
+        onUpdateCallback(lastUpdateTime)
+      }
+    }
+  }
 
-// Playback
+  // If tFrame < nextFrameTime then 0 ticks need to be updated (0 is default for frameCount)
+  // If tFrame = nextFrameTime then 1 tick needs to be updated (and so forth)
+  const onEvaluation = (timeElapsedAbsolute) => {
+    const timeElapsed = timeElapsedAbsolute - lastStartTime
 
-const pauseFrameLoop = () => {
-  if (frameLoopId) {
-    window.cancelAnimationFrame(frameLoopId)
-    frameLoopId = null
+    // How many updates should have happened between these two rendered frames. Not all frames are rendered.
+    // If frameCount is large, then game was asleep, or the machine cannot keep up
+    let frameCount = 0
 
-    if (onPauseCallback) {
-      onPauseCallback()
+    const nextFrameTime = lastUpdateTime + frameInterval
+    if (timeElapsed > nextFrameTime) {
+      // time between requestAnimationFrame callback and last update
+      // const timeSinceTick = timeElapsed - lastUpdateTime
+
+      // Increment total
+      frameCount = Math.floor((timeElapsed - lastUpdateTime) / frameInterval)
     }
 
-    return true
+    console.log('onEvaluation', lastUpdateTime, frameCount, timeElapsed)
+
+    // NOTE: Runs before update and render. Timestamp will not match framerate targets
+    if (onEvaluationCallback) {
+      onEvaluationCallback(timeElapsed)
+    }
+
+    if (frameCount) {
+      // Run frame routine for each tick that has passed
+      queueFrameStateUpdates(frameCount)
+
+      // Run frame update (only once, in case of skipped frames)
+      // FIXME: should we update timestamp after callback?
+      lastRenderTime = lastUpdateTime
+
+      if (onRenderCallback) {
+        onRenderCallback(lastUpdateTime)
+      }
+    }
+
+    lastEvaluationTime = timeElapsed
+
+    return pauseFrameLoop
   }
 
-  return false
-}
+  // Loop while
+  const onEachFrame = (timeElapsedAbsolute) => {
+    console.log('onEachFrame', timeElapsedAbsolute)
 
-const resetFrameLoop = () => {
-  const frameLoopWasRunning = !!frameLoopId
+    // Register next frame
+    // NOTE: requestAnimationFrame will always pass a timestamp to callback
+    frameLoopId = window.requestAnimationFrame(onEachFrame)
 
-  pauseFrameLoop()
+    // Execute frame
+    onEvaluation(timeElapsedAbsolute)
 
-  setInitialValues()
-
-  console.log('resetFrameLoop', lastUpdateTime, lastEvaluationTime)
-
-  // Callback will be passed info whether or not loop was running and will be restarted
-  if (onResetCallback) {
-    onResetCallback(frameLoopWasRunning)
+    // Return method to cancel this loop
+    return pauseFrameLoop
   }
 
-  // Restart after reset if loop was playing when reset was called
-  if (frameLoopWasRunning) {
-    startFrameLoop()
+  // Playback
+
+  const pauseFrameLoop = () => {
+    if (frameLoopId) {
+      window.cancelAnimationFrame(frameLoopId)
+      frameLoopId = null
+
+      if (onPauseCallback) {
+        onPauseCallback()
+      }
+
+      return true
+    }
+
+    return false
   }
-}
 
-// Start cycle
-const startFrameLoop = (options) => {
-  lastStartTime = window.performance.now()
+  const resetFrameLoop = () => {
+    const frameLoopWasRunning = !!frameLoopId
 
-  console.log('startFrameLoop', lastEvaluationTime)
+    pauseFrameLoop()
 
+    setInitialValues()
+
+    console.log('resetFrameLoop', lastUpdateTime, lastEvaluationTime)
+
+    // Callback will be passed info whether or not loop was running and will be restarted
+    if (onResetCallback) {
+      onResetCallback(frameLoopWasRunning)
+    }
+
+    // Restart after reset if loop was playing when reset was called
+    if (frameLoopWasRunning) {
+      playFrameLoop()
+    }
+  }
+
+  // Start cycle
+  const playFrameLoop = (options) => {
+    lastStartTime = window.performance.now()
+
+    console.log('playFrameLoop', lastEvaluationTime)
+
+    if (options) {
+      setOptions(options)
+    }
+
+    return onEachFrame(lastEvaluationTime)
+  }
+
+  // Prepare
+  // We run resets here to always have sensible initial values
+  resetFrameLoop()
+  setDefaults()
+
+  // Set user-defined defaults
   if (options) {
     setOptions(options)
   }
 
-  return frameLoop(lastEvaluationTime)
-}
+  return {
+    setOptions,
 
-// Prepare
-// We run resets here to always have sensible initial values
-resetFrameLoop()
-setDefaults()
+    getFps,
+    getFrameTime,
+    getLastEvaluationTime,
+    getLastUpdateTime,
+    getLastRenderTime,
+    getLastStartTime,
 
-export {
-  setOptions,
-
-  getFps,
-  getFrameTime,
-  getLastEvaluationTime,
-  getLastUpdateTime,
-  getLastRenderTime,
-  getLastStartTime,
-
-  pauseFrameLoop,
-  resetFrameLoop,
-  startFrameLoop
+    pause: pauseFrameLoop,
+    reset: resetFrameLoop,
+    play: playFrameLoop
+  }
 }

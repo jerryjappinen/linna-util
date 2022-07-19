@@ -1,4 +1,4 @@
-import startCase from 'lodash/startCase'
+import { startCase } from 'lodash'
 
 export default (email) => {
   const replacedEmail = email.replace(/@.*$/, '')
