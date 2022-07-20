@@ -8,7 +8,7 @@ Useful, generic JavaScript utilities for common tasks. Designed to be compatible
 npm i linna-util
 
 # Some utilities require extra dependencies, e.g.
-npm i linna-util lodash date-fns
+npm i linna-util lodash-es date-fns
 ```
 
 ### Usage

@@ -1,4 +1,4 @@
-import { camelCase, lowerCase, map } from 'lodash'
+import { camelCase, lowerCase, map } from 'lodash-es'
 
 // Convert event name to a conventional colon-separated string that's safe to use in HTML templates
 export default (...eventNameParts) => {

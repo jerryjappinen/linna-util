@@ -1,4 +1,4 @@
-import { flatten, includes, map } from 'lodash'
+import { flatten, includes, map } from 'lodash-es'
 
 const keyCodeShortcuts = {
   left: 37,

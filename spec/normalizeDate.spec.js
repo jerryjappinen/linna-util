@@ -1,4 +1,4 @@
-import { isDate, isNaN } from 'lodash'
+import { isDate, isNaN } from 'lodash-es'
 
 import normalizeDate from '../src/normalizeDate'
 

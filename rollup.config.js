@@ -11,6 +11,7 @@ const builds = [
 
 const external = [
   'lodash',
+  'lodash-es',
   'date-fns',
   'md5',
   'parse-csv',
