@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import trimWhitespace from '../src/trimWhitespace'
 
 // Test cases
@@ -19,7 +21,7 @@ const whitespaceStrings = {
   newlines: '\n\n\n'
 }
 
-describe('trimWhitespace with trailing whitespace', () => {
+describe.concurrent('trimWhitespace with trailing whitespace', () => {
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
@@ -32,7 +34,7 @@ describe('trimWhitespace with trailing whitespace', () => {
   }
 })
 
-describe('Util trimWhitespace with leading whitespace', () => {
+describe.concurrent('Util trimWhitespace with leading whitespace', () => {
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
@@ -45,7 +47,7 @@ describe('Util trimWhitespace with leading whitespace', () => {
   }
 })
 
-describe('Util trimWhitespace with excess whitespace', () => {
+describe.concurrent('Util trimWhitespace with excess whitespace', () => {
   // Expected result is the same for all these test cases
   const partOne = 'Foo'
   const partTwo = 'oo'

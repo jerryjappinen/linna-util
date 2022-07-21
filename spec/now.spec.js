@@ -1,7 +1,9 @@
+import { describe, it, expect } from 'vitest'
+
 import now from '../src/now'
 
-describe('now', () => {
+describe.concurrent('now', () => {
   it('should be date', () => {
-    expect(now()).toBeDate()
+    expect(now()).toBeInstanceOf(Date)
   })
 })

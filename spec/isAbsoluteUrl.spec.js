@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import isAbsoluteUrl from '../src/isAbsoluteUrl'
 
 // Test cases
@@ -12,7 +14,7 @@ const testCases = {
   test: false // also relative URL
 }
 
-describe('isAbsoluteUrl', () => {
+describe.concurrent('isAbsoluteUrl', () => {
   for (const string in testCases) {
     it('"' + string + ' should be `' + testCases[string] + '`', () => {
       expect(isAbsoluteUrl(string)).toEqual(testCases[string])

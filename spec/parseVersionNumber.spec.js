@@ -1,8 +1,10 @@
+import { describe, it, expect } from 'vitest'
+
 import { isArray } from 'lodash-es'
 
 import parseVersionNumber from '../src/parseVersionNumber'
 
-describe('parseVersionNumber', () => {
+describe.concurrent('parseVersionNumber', () => {
   it('should return array', () => {
     expect(isArray(parseVersionNumber('1.0.0'))).toBeTruthy()
   })

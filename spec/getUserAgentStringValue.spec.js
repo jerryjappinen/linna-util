@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import getUserAgentStringValue from '../src/getUserAgentStringValue'
 
-describe('getUserAgentStringValue', () => {
+describe.concurrent('getUserAgentStringValue', () => {
   const ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.456.789 Safari/537.36'
 
   it('should return null when no match', () => {

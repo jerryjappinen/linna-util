@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import formatSlug from '../src/formatSlug'
 
-describe('formatSlug', () => {
+describe.concurrent('formatSlug', () => {
   it('should slice to 16 chars', () => {
     expect(formatSlug('fooofooofooofooo')).toEqual('fooofooofooofooo')
     expect(formatSlug('fooofooofooofooofooofooofooofooo')).toEqual('fooofooofooofooo')

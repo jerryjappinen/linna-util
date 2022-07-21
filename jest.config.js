@@ -1,11 +1,25 @@
-const path = require('path')
+// const path = require('path')
 
 module.exports = {
-  rootDir: path.resolve(__dirname, './'),
+  // rootDir: path.resolve(__dirname, './'),
 
-  setupFilesAfterEnv: [
-    './spec/setup.js'
+  transformIgnorePatterns: [
+    'node_modules/(?!lodash-es)'
   ],
 
-  coverageDirectory: '<rootDir>/coverage'
+  // transform: {
+  //   '\\.m?js$': ['rollup-jest', {
+  //     output: {
+  //       sourcemap: true
+  //     }
+  //   }]
+  // },
+
+  // https://jestjs.io/docs/ecmascript-modules
+  // transform: {},
+
+  setupFilesAfterEnv: [
+    // 'jest-chain', // broken
+    'jest-extended/all'
+  ]
 }

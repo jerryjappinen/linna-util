@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import { isDate, isNaN } from 'lodash-es'
 
 import normalizeDate from '../src/normalizeDate'
@@ -6,7 +8,7 @@ const isValidDate = (value) => {
   return !!(isDate(value) && value.getTime && !isNaN(value.getTime()))
 }
 
-describe('normalizeDate', () => {
+describe.concurrent('normalizeDate', () => {
   it('Returns null on empty values', () => {
     expect(normalizeDate()).toBeNull()
     expect(normalizeDate(null)).toBeNull()

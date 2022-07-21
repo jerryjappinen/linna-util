@@ -1,9 +1,11 @@
+import { describe, it, expect } from 'vitest'
+
 import forEachSync from '../src/forEachSync'
 import wait from '../src/wait'
 
-describe('forEachSync', () => {
+describe.concurrent('forEachSync', () => {
   it('should wait all synchronously', async () => {
-    jest.setTimeout(12000)
+    // jest.setTimeout(12000)
 
     const durations = [
       1000,
@@ -23,6 +25,7 @@ describe('forEachSync', () => {
     })
 
     const endTime = new Date()
+    // @ts-ignore
     const diff = endTime - startTime
 
     expect(Math.round((diff) / 1000)).toEqual(sum / 1000)

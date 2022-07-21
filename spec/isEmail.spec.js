@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import isEmail from '../src/isEmail'
 
-describe('isEmail', () => {
+describe.concurrent('isEmail', () => {
   it('Fails with short TLD', () => {
     expect(isEmail('foo@bar.i')).toBeFalsy()
   })

@@ -20,38 +20,36 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build:w": "rollup -c -w",
+    "dev": "vitest",
+    "test": "vitest run",
     "prepare": "npm run build",
     "patch": "git push && npm version patch -m \"New patch version\" && npm publish && git push -u origin HEAD --tags",
     "minor": "git push && npm version minor -m \"New minor version\" && npm publish && git push -u origin HEAD --tags",
     "major": "git push && npm version major -m \"New major version\" && npm publish && git push -u origin HEAD --tags",
     "lint": "eslint src/** spec/**",
     "lint:fix": "npm run lint -- --fix",
-    "lint:fix:dry": "npm run lint -- --fix-dry-run",
-    "test": "jest --config jest.config.js",
-    "test:watch": "npm run test -- --watch"
+    "lint:fix:dry": "npm run lint -- --fix-dry-run"
   },
   "peerDependencies": {
     "date-fns": "^2.28.0",
     "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
     "parse-csv": "^0.2.0",
-    "remove-markdown": "^0.5.0"
+    "remove-markdown": "^0.5.0",
+    "seedrandom": "^3.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@types/jest": "^26.0.24",
-    "eslint": "^7.7.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-standard": "^4.1.0",
-    "jest": "^27.5.1",
-    "jest-chain": "^1.1.5",
-    "jest-extended": "^0.11.5",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
     "rollup": "^2.77.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4"
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "vitest": "^0.18.1"
   }
 }

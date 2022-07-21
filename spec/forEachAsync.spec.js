@@ -1,9 +1,11 @@
+import { describe, it, expect } from 'vitest'
+
 import forEachAsync from '../src/forEachAsync'
 import wait from '../src/wait'
 
-describe('forEachAsync', () => {
+describe.concurrent('forEachAsync', () => {
   it('should wait all asynchronously', async () => {
-    jest.setTimeout(6000)
+    // jest.setTimeout(6000)
 
     const durations = [
       1000,
@@ -18,13 +20,14 @@ describe('forEachAsync', () => {
     await forEachAsync(durations, wait)
 
     const endTime = new Date()
+    // @ts-ignore
     const diff = endTime - startTime
 
     expect(Math.round((diff) / 1000)).toEqual(Math.max(...durations) / 1000)
   })
 
   it('should return object as object', async () => {
-    jest.setTimeout(6000)
+    // jest.setTimeout(6000)
 
     const {
       one,

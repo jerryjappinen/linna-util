@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import isValidDate from '../src/isValidDate'
 
-describe('isValidDate', () => {
+describe.concurrent('isValidDate', () => {
   it('Fails with invalid date', () => {
     expect(isValidDate(new Date(''))).toBeFalsy()
     expect(isValidDate(new Date('foo'))).toBeFalsy()

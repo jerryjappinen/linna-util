@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import formatFileSize from '../src/formatFileSize'
 
-describe('formatFileSize', () => {
+describe.concurrent('formatFileSize', () => {
   it('should be 0 kB in empty', () => {
     expect(formatFileSize(0)).toEqual('0 kB')
   })

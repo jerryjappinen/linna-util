@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import composeClassnames from '../src/composeClassnames'
 
-describe('composeClassnames', () => {
+describe.concurrent('composeClassnames', () => {
   it('should work with String passed', () => {
     expect(composeClassnames('foo', true)).toEqual('is-foo')
     expect(composeClassnames('foo', false)).toEqual(null)

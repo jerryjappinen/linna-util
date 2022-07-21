@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import toDecimal from '../src/toDecimal'
 
-describe('toDecimal', () => {
+describe.concurrent('toDecimal', () => {
   it('works with integers', () => {
     expect(toDecimal(0)).toEqual('0.00')
     expect(toDecimal(2)).toEqual('2.00')

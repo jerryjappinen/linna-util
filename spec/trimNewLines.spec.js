@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import trimNewLines from '../src/trimNewLines'
 
 // Test cases
@@ -9,7 +11,7 @@ const newlineStrings = {
   newlines3: '\n\n\n'
 }
 
-describe('trimNewLines', () => {
+describe.concurrent('trimNewLines', () => {
   it('should not touch string with no new lines', () => {
     expect(trimNewLines('Foo')).toEqual('Foo')
   })
@@ -23,7 +25,7 @@ describe('trimNewLines', () => {
   })
 })
 
-describe('Util trimNewLines with trailing new line', () => {
+describe.concurrent('Util trimNewLines with trailing new line', () => {
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
@@ -37,7 +39,7 @@ describe('Util trimNewLines with trailing new line', () => {
   }
 })
 
-describe('Util trimNewLines with leading new line', () => {
+describe.concurrent('Util trimNewLines with leading new line', () => {
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 
@@ -51,7 +53,7 @@ describe('Util trimNewLines with leading new line', () => {
   }
 })
 
-describe('Util trimNewLines with excess new line', () => {
+describe.concurrent('Util trimNewLines with excess new line', () => {
   // Expected result is the same for all these test cases
   const partOne = 'Foo'
   const partTwo = 'oo'

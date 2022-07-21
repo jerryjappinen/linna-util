@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import tryPromises from '../src/tryPromises'
 import wait from '../src/wait'
 
@@ -6,7 +8,7 @@ const failingCallback = async () => {
   throw new Error('This error is intentional')
 }
 
-describe('tryPromises', () => {
+describe.concurrent('tryPromises', () => {
   it('should wait all asynchronously', async () => {
     const seconds = [1000, 2000]
 
@@ -14,12 +16,14 @@ describe('tryPromises', () => {
     await tryPromises(...seconds.map(wait))
     const endTime = new Date()
 
-    expect(Math.round((endTime - startTime) / 1000)).toEqual(Math.max(...seconds) / 1000)
+    // @ts-ignore
+    const diff = endTime - startTime
+
+    expect(Math.round((diff) / 1000)).toEqual(Math.max(...seconds) / 1000)
   })
 
-  it('should go through with no error', async (done) => {
+  it('should go through with no error', async () => {
     await tryPromises(failingCallback())
-    done()
   })
 
   it('should return undefined upon error', async () => {

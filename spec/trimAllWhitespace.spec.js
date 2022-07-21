@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 import trimAllWhitespace from '../src/trimAllWhitespace'
 
 // Test cases
@@ -19,7 +21,7 @@ const whitespaceStrings = {
   newlines: '\n\n\n'
 }
 
-describe('trimAllWhitespace with trailing whitespace', () => {
+describe.concurrent('trimAllWhitespace with trailing whitespace', () => {
   // Expected result is the same for all these test cases
   const expectedResult = 'Foooo'
 

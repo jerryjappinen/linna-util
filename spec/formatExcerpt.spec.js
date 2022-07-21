@@ -1,6 +1,8 @@
+import { describe, it, expect } from 'vitest'
+
 import formatExcerpt from '../src/formatExcerpt'
 
-describe('formatExcerpt', () => {
+describe.concurrent('formatExcerpt', () => {
   it('Leaves short string untouched', () => {
     expect(formatExcerpt('Foo bar', 10)).toEqual('Foo bar')
   })
