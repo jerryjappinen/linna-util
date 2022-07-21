@@ -104,7 +104,7 @@ export default (options) => {
   const queueFrameStateUpdates = (frameCount) => {
     console.log('queueFrameStateUpdates', frameCount)
 
-    for (var i = 0; i < frameCount; i++) {
+    for (let i = 0; i < frameCount; i++) {
       lastUpdateTime = lastUpdateTime + frameInterval
 
       // Run (all) frame updates
