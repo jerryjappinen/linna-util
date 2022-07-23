@@ -1,28 +1,40 @@
+// {
+//   fps,
+//   frameTime,
+//   onEvaluation,
+//   onUpdate,
+//   onRender,
+//   onPause,
+//   onReset
+// }
+
+// Run a recurring update routine
 export default (options) => {
-  // Frame loop runs a recurring update routine with a maximum frame rate
-  const defaultFps = 60
+  const defaultFps = 60 // Maximum frame rate
 
   let lastStartTime = 0
   let lastEvaluationTime = 0 // Time of last provided requestAnimationFrame
-  let lastUpdateTime = 0 // Time of last update. Increments by exactly 1 frameInterval
-  let lastRenderTime = 0 // Time of last render. Increments in multiples of frameInterval
-  let frameInterval = 0 // how frequently the game state updates in ms. It is 20 Hz (50ms) here
+  let lastUpdateTime = 0 // Time of last update. Increments by exactly 1 frameTime
+  let lastRenderTime = 0 // Time of last render. Increments in multiples of frameTime
+  let frameTime = 0 // how frequently the game state updates in ms. It is 20 Hz (50ms) here
   let frameLoopId = null // requestAnimationFrame will store the reset callback here
 
   // User callbacks
   let onEvaluationCallback = null // runs as fast as the computer can
   let onUpdateCallback = null // always runs for every frame
   let onRenderCallback = null // runs only on the last frame, when frames are skipped
+  let onPlayCallback = null // runs when a loop is started
   let onPauseCallback = null // runs when a loop is paused
-  let onResetCallback = null // runs when a loop is reset
+  let onResetCallback = null // runs when a loop is reset after pausing
+  let onSetOptionsCallback = null // runs when setOptions is called
 
   // Getters
   const getFrameTime = () => {
-    return frameInterval
+    return frameTime
   }
 
   const getFps = () => {
-    return 1000 / frameInterval
+    return 1000 / frameTime
   }
 
   const getLastStartTime = () => {
@@ -41,9 +53,9 @@ export default (options) => {
     return lastEvaluationTime
   }
 
-  // Set FPS as frameInterval (in ms)
+  // Set FPS as frameTime (in ms)
   const setFrameTime = (frameTimeInMs) => {
-    frameInterval = frameTimeInMs
+    frameTime = frameTimeInMs
   }
 
   const setFps = (fps) => {
@@ -53,18 +65,20 @@ export default (options) => {
   // User-defined options and callbacks
   const setOptions = ({
     fps,
-    frameInterval,
+    frameTime,
     onEvaluation,
     onUpdate,
     onRender,
+    onPlay,
     onPause,
-    onReset
+    onReset,
+    onSetOptions
   }) => {
     // Frame time can be set in FPS or MS
     if (fps) {
       setFps(fps)
-    } else if (frameInterval) {
-      setFrameTime(frameInterval)
+    } else if (frameTime) {
+      setFrameTime(frameTime)
     }
 
     if (onEvaluation) {
@@ -79,12 +93,42 @@ export default (options) => {
       onRenderCallback = onRender
     }
 
+    if (onPlay) {
+      onPlayCallback = onPlay
+    }
+
     if (onPause) {
       onPauseCallback = onPause
     }
 
     if (onReset) {
       onResetCallback = onReset
+    }
+
+    if (onSetOptions) {
+      onSetOptionsCallback = onSetOptions
+    }
+
+    if (onSetOptionsCallback) {
+      onSetOptionsCallback(getOptions())
+    }
+  }
+
+  const getIsPlaying = () => {
+    return !!frameLoopId
+  }
+
+  const getOptions = () => {
+    return {
+      fps: getFps(),
+      frameTime: getFrameTime(),
+      onEvaluation: onEvaluationCallback,
+      onUpdate: onUpdateCallback,
+      onRender: onRenderCallback,
+      onPlay: onPlayCallback,
+      onPause: onPauseCallback,
+      onReset: onResetCallback,
+      onSetOptions: onSetOptionsCallback
     }
   }
 
@@ -105,7 +149,7 @@ export default (options) => {
     console.log('queueFrameStateUpdates', frameCount)
 
     for (let i = 0; i < frameCount; i++) {
-      lastUpdateTime = lastUpdateTime + frameInterval
+      lastUpdateTime = lastUpdateTime + frameTime
 
       // Run (all) frame updates
       if (onUpdateCallback) {
@@ -123,13 +167,13 @@ export default (options) => {
     // If frameCount is large, then game was asleep, or the machine cannot keep up
     let frameCount = 0
 
-    const nextFrameTime = lastUpdateTime + frameInterval
+    const nextFrameTime = lastUpdateTime + frameTime
     if (timeElapsed > nextFrameTime) {
       // time between requestAnimationFrame callback and last update
       // const timeSinceTick = timeElapsed - lastUpdateTime
 
       // Increment total
-      frameCount = Math.floor((timeElapsed - lastUpdateTime) / frameInterval)
+      frameCount = Math.floor((timeElapsed - lastUpdateTime) / frameTime)
     }
 
     console.log('onEvaluation', lastUpdateTime, frameCount, timeElapsed)
@@ -219,6 +263,11 @@ export default (options) => {
       setOptions(options)
     }
 
+    // Run (all) frame updates
+    if (onPlayCallback) {
+      onPlayCallback()
+    }
+
     return onEachFrame(lastEvaluationTime)
   }
 
@@ -234,7 +283,9 @@ export default (options) => {
 
   return {
     setOptions,
+    getIsPlaying,
 
+    getOptions,
     getFps,
     getFrameTime,
     getLastEvaluationTime,
