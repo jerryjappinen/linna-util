@@ -1,5 +1,6 @@
-import isClient from './isClient'
+import windowExists from './windowExists'
 
 export default () => {
-  return !isClient()
+  // @ts-ignore
+  return (process && process.server) || !windowExists()
 }

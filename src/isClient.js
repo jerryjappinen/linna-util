@@ -1,3 +1,5 @@
+import isServer from './isServer'
+
 export default () => {
-  return !(process && process.server)
+  return !isServer()
 }

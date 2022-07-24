@@ -4,5 +4,5 @@ import { camelCase } from 'lodash-es'
 export default (string, length) => {
   return camelCase('' + string)
     .toLowerCase()
-    .slice(0, (length || 16))
+    .slice(0, (length || 64))
 }

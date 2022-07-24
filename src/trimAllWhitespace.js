@@ -1,3 +1,3 @@
 export default (string) => {
-  return string.replace(/\s/g, '')
+  return (string || '').replace(/\s/g, '')
 }

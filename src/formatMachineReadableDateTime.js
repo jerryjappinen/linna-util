@@ -1,9 +1,5 @@
-import { isDate } from 'date-fns'
+import normalizeDate from './normalizeDate'
 
 export default (date) => {
-  if (!isDate(date)) {
-    return new Date(date).toISOString()
-  }
-
-  return date.toISOString()
+  return normalizeDate(date || new Date()).toISOString()
 }

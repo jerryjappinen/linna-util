@@ -3,15 +3,13 @@ import { describe, it, expect } from 'vitest'
 import formatSlug from '../src/formatSlug'
 
 describe.concurrent('formatSlug', () => {
-  it('should slice to 16 chars', () => {
-    expect(formatSlug('fooofooofooofooo')).toEqual('fooofooofooofooo')
-    expect(formatSlug('fooofooofooofooofooofooofooofooo')).toEqual('fooofooofooofooo')
-    expect(formatSlug('foobar')).toEqual('foobar')
+  it('should slice to 64 chars', () => {
+    expect(formatSlug('fooo'.repeat(16 * 10))).toEqual('fooo'.repeat(16))
   })
 
   it('lowercases uppercase', () => {
-    expect(formatSlug('Fooofooofooofooo')).toEqual('fooofooofooofooo')
-    expect(formatSlug('foooFooofooofooo')).toEqual('fooofooofooofooo')
+    expect(formatSlug('Fooo')).toEqual('fooo')
+    expect(formatSlug('fooo')).toEqual('fooo')
     expect(formatSlug('FOOBar')).toEqual('foobar')
   })
 

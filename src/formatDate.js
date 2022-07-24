@@ -1,5 +1,7 @@
 import { format } from 'date-fns'
 
+import normalizeDate from './normalizeDate'
+
 export default (date) => {
-  return format(date, 'd MMMM yyyy')
+  return format(normalizeDate(date || new Date()), 'd MMMM yyyy')
 }

@@ -1,8 +1,18 @@
 import { format, getDay, getMonth, getYear } from 'date-fns'
 
 import formatDate from './formatDate'
+import normalizeDate from './normalizeDate'
 
-export default (date1, date2) => {
+export default (date1input, date2input) => {
+  let date1 = normalizeDate(date1input)
+  let date2 = normalizeDate(date2input || new Date())
+
+  // Sensible defaults
+  // Normally date1 is older, but if only one is passed, we support it the other way around too
+  if (!date2input && date1 > date2) {
+    [date1, date2] = [date2, date1]
+  }
+
   const year1 = getYear(date1)
   const year2 = getYear(date2)
 
