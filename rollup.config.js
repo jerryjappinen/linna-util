@@ -5,8 +5,8 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 // Specify entrypoints here
 // entrypoint, output
 const builds = [
-  ['src/index.js', 'linna-util'],
-  ['src/contentful/index.js', 'linna-util/contentful']
+  ['src/index.js', 'index'],
+  ['src/contentful/index.js', 'contentful']
 ]
 
 const external = [
