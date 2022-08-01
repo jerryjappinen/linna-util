@@ -8,7 +8,10 @@
   "files": [
     "dist",
     "src",
-    "scripts"
+    "scripts",
+    "moduleNames.js",
+    "contentful.js",
+    "src.js"
   ],
   "author": {
     "name": "Jerry Jäppinen",
@@ -24,6 +27,7 @@
     "build:w": "rollup -c -w",
     "dev": "vitest",
     "test": "vitest run",
+    "clear": "rm -rf dist",
     "prepare": "npm run lint && npm run test && npm run build",
     "patch": "git push && npm version patch -m \"New patch version\" && npm publish && git push -u origin HEAD --tags",
     "minor": "git push && npm version minor -m \"New minor version\" && npm publish && git push -u origin HEAD --tags",

@@ -3,11 +3,17 @@
 import { terser } from 'rollup-plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
+import moduleNames from './moduleNames'
+
 // Specify entrypoints here
 // entrypoint, output
 const builds = [
-  ['src/index.js', 'index'],
-  ['src/contentful/index.js', 'contentful']
+  ['src.js', 'index'],
+  ['contentful.js', 'contentful'],
+
+  ...moduleNames.map((moduleName) => {
+    return [`src/${moduleName}.js`, moduleName]
+  })
 ]
 
 const external = [

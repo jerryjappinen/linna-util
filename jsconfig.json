@@ -5,6 +5,10 @@
   },
   "include": [
     "src/**/*",
-    "spec/**/*"
+    "spec/**/*",
+    "scripts/**/*",
+    "moduleNames.js",
+    "src.js",
+    "contentful.js"
   ]
 }
