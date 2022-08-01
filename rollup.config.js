@@ -1,5 +1,6 @@
 // import commonjs from '@rollup/plugin-commonjs'
 // import resolve from '@rollup/plugin-node-resolve'
+import { terser } from 'rollup-plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
 // Specify entrypoints here
@@ -16,6 +17,21 @@ const external = [
   'md5',
   'parse-csv',
   'remove-markdown'
+]
+
+const plugins = [
+  terser({
+    ecma: 2020,
+    mangle: { toplevel: true },
+    compress: {
+      module: true,
+      toplevel: true,
+      unsafe_arrows: true,
+      drop_console: false,
+      drop_debugger: false
+    },
+    output: { quote_style: 1 }
+  })
 ]
 
 // This is the actual Rollup config
@@ -58,17 +74,19 @@ const getRollupConfigs = (entrypoint, output) => {
     {
       input: entrypoint,
       external: ['ms'].concat(external),
+      plugins: [
+        ...plugins,
+        peerDepsExternal()
+      ],
       output: [
         { file: `dist/${output}.cjs.js`, format: 'cjs' },
         { file: `dist/${output}.esm.js`, format: 'es' }
-      ],
-      plugins: [
-        peerDepsExternal()
       ]
     },
     {
       input: entrypoint,
       external: ['ms'],
+      plugins,
       output: [
         { file: `dist/full/${output}.cjs.js`, format: 'cjs' },
         { file: `dist/full/${output}.esm.js`, format: 'es' }
