@@ -2,9 +2,9 @@
   "name": "linna-util",
   "version": "6.3.0",
   "description": "",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "browser": "dist/index.umd.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "browser": "index.umd.js",
   "files": [
     "dist",
     "src",
