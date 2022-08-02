@@ -3,6 +3,7 @@ export default [
   'clearSelection',
   'composeClassnames',
   'createStyleElement',
+  'csv',
   'csvToJson',
   'detectObtrusiveScrollbars',
   'eventHasAnyMetaKey',
