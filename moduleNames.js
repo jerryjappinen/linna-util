@@ -68,6 +68,7 @@ export default [
   'isTest',
   'isValidDate',
   'linkIsInternal',
+  'md5',
   'mergeWithArrays',
   'nextTick',
   'normalizeDate',

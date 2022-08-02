@@ -35,7 +35,7 @@
     "dev": "vitest",
     "test": "vitest run",
     "clear": "rm -rf dist",
-    "prepare": "npm run lint && npm run test && npm run build",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
     "patch": "git push && npm version patch -m \"New patch version\" && npm publish && git push -u origin HEAD --tags",
     "minor": "git push && npm version minor -m \"New minor version\" && npm publish && git push -u origin HEAD --tags",
     "major": "git push && npm version major -m \"New major version\" && npm publish && git push -u origin HEAD --tags",
@@ -45,9 +45,7 @@
   },
   "peerDependencies": {
     "date-fns": "^2.29.1",
-    "lodash-es": "^4.17.21",
-    "md5": "^2.3.0",
-    "seedrandom": "^3.0.5"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.1",
@@ -64,8 +62,10 @@
     "vitest": "^0.20.2"
   },
   "dependencies": {
+    "md5-es": "^1.8.2",
+    "mv": "^2.1.1",
     "parse-csv": "^0.2.0",
     "remove-markdown": "^0.5.0",
-    "mv": "^2.1.1"
+    "seedrandom": "^3.0.5"
   }
 }
