@@ -8,8 +8,8 @@ import moduleNames from './moduleNames'
 // Specify entrypoints here
 // entrypoint, output
 const builds = [
-  ['src.js', 'index'],
-  ['contentful.js', 'contentful'],
+  ['src/index.js', 'index'],
+  ['src/contentful/index.js', 'contentful'],
 
   ...moduleNames.map((moduleName) => {
     return [`src/${moduleName}.js`, moduleName]
