@@ -2,13 +2,14 @@
 import removeMarkdown from 'remove-markdown'
 
 // Remove HTML and Markdown formatting
-export default (string) => {
+export default (string, options) => {
   return !string
     ? ''
     : removeMarkdown(string, {
       stripListLeaders: true,
       listUnicodeChar: '',
       gfm: true,
-      useImgAltText: false
+      useImgAltText: false,
+      ...(options || {})
     }).trim()
 }
