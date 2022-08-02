@@ -1,4 +1,5 @@
-import { includes, some } from 'lodash-es'
+import includes from 'lodash-es/includes'
+import some from 'lodash-es/some'
 
 export default (collection, values, startsAt) => {
   return some(values, (value) => {

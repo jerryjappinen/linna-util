@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
-import { isDate, isNaN } from 'lodash-es'
+import isDate from 'lodash-es/isDate'
+import isNaN from 'lodash-es/isNaN'
 
 import normalizeDate from '../src/normalizeDate'
 

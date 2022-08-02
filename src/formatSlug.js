@@ -1,4 +1,4 @@
-import { camelCase } from 'lodash-es'
+import camelCase from 'lodash-es/camelCase'
 
 // Return a lowercase, short string without special characters
 export default (string, length) => {

@@ -1,4 +1,6 @@
-import { camelCase, replace, snakeCase } from 'lodash-es'
+import camelCase from 'lodash-es/camelCase'
+import replace from 'lodash-es/replace'
+import snakeCase from 'lodash-es/snakeCase'
 
 import trimWhitespace from './trimWhitespace'
 

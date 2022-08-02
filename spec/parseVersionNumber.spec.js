@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { isArray } from 'lodash-es'
+import isArray from 'lodash-es/isArray'
 
 import parseVersionNumber from '../src/parseVersionNumber'
 

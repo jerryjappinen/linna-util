@@ -1,4 +1,5 @@
-import { isPlainObject, snakeCase } from 'lodash-es'
+import isPlainObject from 'lodash-es/isPlainObject'
+import snakeCase from 'lodash-es/snakeCase'
 
 import getAssetUrl from './getAssetUrl'
 

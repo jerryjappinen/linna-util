@@ -1,4 +1,5 @@
-import { isArray, mergeWith } from 'lodash-es'
+import isArray from 'lodash-es/isArray'
+import mergeWith from 'lodash-es/mergeWith'
 
 // Also merge arrays
 // https://lodash.com/docs/4.17.15#mergeWith
