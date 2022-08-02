@@ -2,9 +2,17 @@
   "name": "linna-util",
   "version": "6.5.1",
   "description": "",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "browser": "dist/index.umd.js",
+  "type": "module",
+  "exports": {
+    ".": "./src.js",
+    "./*": "./src/*.js",
+    "./*.js": "./src/*.js",
+    "./contentful": "./src/contentful/index.js",
+    "./contentful.js": "./src/contentful/index.js",
+    "./moduleNames": "./moduleNames.js",
+    "./moduleNames.js": "./moduleNames.js",
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
     "src",

@@ -6,8 +6,6 @@
   "include": [
     "src/**/*",
     "spec/**/*",
-    "moduleNames.js",
-    "src.js",
-    "contentful.js"
+    "moduleNames.js"
   ]
 }
