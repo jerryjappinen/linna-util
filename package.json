@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "exports": {
-    ".": "./src.js",
+    ".": "./src/index.js",
     "./*": "./src/*.js",
     "./*.js": "./src/*.js",
     "./contentful": "./src/contentful/index.js",
