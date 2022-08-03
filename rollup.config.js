@@ -21,7 +21,8 @@ const external = [
   'lodash-es',
   'date-fns',
   'md5',
-  'parse-csv',
+  'md5-es',
+  '@vanillaes/csv',
   'remove-markdown'
 ]
 
