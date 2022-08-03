@@ -1,7 +1,14 @@
-import md5 from './md5'
+// import md5 from './md5'
+import gravatarUrl from 'gravatar-url'
 
 export default (email, size, fallbackImageUrl) => {
-  return 'https://www.gravatar.com/avatar/' + md5(email) + '.jpg' +
-    (size ? ('?s=' + size) : '') +
-    (fallbackImageUrl ? ('?d=' + fallbackImageUrl) : '')
+  const options = {
+    size: size || 160
+  }
+
+  if (fallbackImageUrl) {
+    options.default = fallbackImageUrl
+  }
+
+  return gravatarUrl(email, options)
 }
