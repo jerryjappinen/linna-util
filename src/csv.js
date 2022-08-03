@@ -1,4 +1,7 @@
-// import csv from 'parse-csv'
-const csv = require('parse-csv')
+import { parse, stringify } from '@vanillaes/csv'
 
-export default csv
+// https://github.com/vanillaes/csv
+export default {
+  parse,
+  stringify
+}

@@ -64,9 +64,9 @@
     "vitest": "^0.20.3"
   },
   "dependencies": {
+    "@vanillaes/csv": "^3.0.1",
     "md5-es": "^1.8.2",
     "mv": "^2.1.1",
-    "parse-csv": "^0.2.0",
     "remove-markdown": "^0.5.0",
     "seedrandom": "^3.0.5"
   }

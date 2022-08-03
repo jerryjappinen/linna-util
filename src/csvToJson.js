@@ -1,19 +1,28 @@
 import csv from './csv'
 
-// https://www.npmjs.com/package/parse-csv#parser-options
+// https://github.com/vanillaes/csv
 export default (csvData, parseHeaders, optionsInput) => {
   const opts = optionsInput || {}
+  const rows = csv.parse(csvData, opts)
 
-  if (parseHeaders) {
-    return csv.toJSON(csvData, {
-      headers: {
-        included: true
-      },
-      ...opts
-    })
+  if (parseHeaders && rows.length) {
+    const columnNames = rows[0]
+    const objects = []
+
+    // Turn rows from arrays to keyed maps
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i]
+      const keyedRow = {}
+
+      row.forEach((value, j) => {
+        keyedRow[columnNames[j]] = value
+      })
+
+      objects.push(keyedRow)
+    }
+
+    return objects
   }
 
-  const parser = new csv.Parser(opts)
-  const { data } = parser.parse(csvData)
-  return data
+  return rows
 }

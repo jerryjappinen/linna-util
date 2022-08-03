@@ -14,8 +14,6 @@ describe.concurrent('csvToJson', () => {
   const testJson = csvToJson(testString)
   const testJsonWithHeaders = csvToJson(testStringWithHeaders, true)
 
-  console.log(testJson, testJsonWithHeaders)
-
   it('should return array', () => {
     expect(isArray(testJson)).toBeTruthy()
     expect(isArray(testJsonWithHeaders)).toBeTruthy()
