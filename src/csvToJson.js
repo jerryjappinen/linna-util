@@ -1,11 +1,19 @@
 import csv from './csv'
 
-export default (csvData, headersIncluded) => {
-  const json = csv.toJSON(csvData, {
-    headers: {
-      included: headersIncluded
-    }
-  })
+// https://www.npmjs.com/package/parse-csv#parser-options
+export default (csvData, parseHeaders, optionsInput) => {
+  const opts = optionsInput || {}
 
-  return json
+  if (parseHeaders) {
+    return csv.toJSON(csvData, {
+      headers: {
+        included: true
+      },
+      ...opts
+    })
+  }
+
+  const parser = new csv.Parser(opts)
+  const { data } = parser.parse(csvData)
+  return data
 }

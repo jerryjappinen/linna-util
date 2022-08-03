@@ -9,6 +9,8 @@
     "./*.js": "./src/*.js",
     "./contentful": "./src/contentful/index.js",
     "./contentful.js": "./src/contentful/index.js",
+    "./contentful/*": "./src/contentful/*.js",
+    "./contentful/*.js": "./src/contentful/*.js",
     "./moduleNames": "./moduleNames.js",
     "./moduleNames.js": "./moduleNames.js",
     "./package.json": "./package.json"
@@ -59,7 +61,7 @@
     "rollup": "^2.77.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
-    "vitest": "^0.20.2"
+    "vitest": "^0.20.3"
   },
   "dependencies": {
     "md5-es": "^1.8.2",
