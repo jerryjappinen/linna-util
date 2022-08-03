@@ -19,11 +19,7 @@ const builds = [
 const external = [
   'lodash',
   'lodash-es',
-  'date-fns',
-  'md5',
-  'md5-es',
-  '@vanillaes/csv',
-  'remove-markdown'
+  'date-fns'
 ]
 
 const plugins = [
