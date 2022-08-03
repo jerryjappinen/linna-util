@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-prototype-builtins */
 
 // We clone the source code so we don't rely on a cjs module
@@ -41,7 +42,7 @@ const removeMarkdown = (md, options) => {
     // Remove HTML tags
       .replace(/<[^>]*>/g, '')
 
-    let htmlReplaceRegex = new RegExp('<[^>]*>', 'g')
+    let htmlReplaceRegex = /'<[^>]*>'/g
     if (options.htmlTagsToSkip.length > 0) {
       // Using negative lookahead. Eg. (?!sup|sub) will not match 'sup' and 'sub' tags.
       const joinedHtmlTagsToSkip = '(?!' + options.htmlTagsToSkip.join('|') + ')'
