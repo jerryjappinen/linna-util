@@ -45,6 +45,12 @@
     "lint:fix": "npm run lint -- --fix",
     "lint:fix:dry": "npm run lint -- --fix-dry-run"
   },
+  "dependencies": {
+    "@vanillaes/csv": "^3.0.1",
+    "gravatar-url": "^4.0.1",
+    "md5-es": "^1.8.2",
+    "seedrandom": "^3.0.5"
+  },
   "peerDependencies": {
     "date-fns": "^2.29.1",
     "lodash-es": "^4.17.21"
@@ -62,12 +68,5 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
     "vitest": "^0.20.3"
-  },
-  "dependencies": {
-    "@vanillaes/csv": "^3.0.1",
-    "gravatar-url": "^4.0.1",
-    "md5-es": "^1.8.2",
-    "mv": "^2.1.1",
-    "seedrandom": "^3.0.5"
   }
 }
